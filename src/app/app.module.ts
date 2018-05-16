@@ -10,14 +10,16 @@ import { environment } from '../environments/environment';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { PostComponent } from './post/post.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     PostsComponent,
-    CommentsComponent
+    CommentsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
