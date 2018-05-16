@@ -1,3 +1,13 @@
 <p>
   posts works!
 </p>
+
+
+
+<div *ngFor="let item of items | async">
+  <h3>Tieu de: {{ item.postTitle }}</h3>
+  <h4>Tac gia: {{ item.postAuthor }}</h4>
+  <p>Noi dung: {{ item.postContent }}</p>
+  <pre>ID cua post: {{ item.postID }} </pre>
+  <hr>
+</div>
