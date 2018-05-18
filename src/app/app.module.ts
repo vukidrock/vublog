@@ -13,6 +13,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { PostComponent } from './post/post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddCommentComponent } from './addcomment/addcomment.component';
+import { ShowCommentsComponent } from './showcomments/showcomments.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddCommentComponent } from './addcomment/addcomment.component';
     PostsComponent,
     CommentsComponent,
     PostComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    ShowCommentsComponent
   ],
   imports: [
     BrowserModule,

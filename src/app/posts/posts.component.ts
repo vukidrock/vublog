@@ -19,10 +19,10 @@ export interface Post {
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent {
-  public itemsCollection: AngularFirestoreCollection<Post>;
+  public postsCollection: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
   constructor(public afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<Post>('posts');
-    this.posts = this.itemsCollection.valueChanges();
+    this.postsCollection = afs.collection<Post>('posts');
+    this.posts = this.postsCollection.valueChanges();
   }
 }

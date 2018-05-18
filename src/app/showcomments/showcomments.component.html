@@ -1,0 +1,6 @@
+<div *ngFor="let comment of comments | async">
+  <h3>Comment by: {{ comment.commentByUserId }}</h3>
+  <p>Noi dung: {{ comment.commentContent }}</p>
+  <pre>ID cua comment: {{ comment.commentId }} </pre>
+  <hr>
+</div>

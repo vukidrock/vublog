@@ -6,8 +6,10 @@
 - [ x ] display posts from firebase database
 - [ x ] view post with id
 - [ x ] add comment system
+- [ x ] show comment (app-show-comment)
+
 ---
-- [ ] show comment (app-show-comment)
+- [ ] add timestamp to post/ comment
 - [ ] add user system
 - [ ] view user profile (post, postcount, infomation)
 - [ ] login/ logout system
