@@ -18,4 +18,8 @@ export class AppComponent {
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.valueChanges();
   }
+
+  hello() {
+      console.log('hello');
+}
 }
