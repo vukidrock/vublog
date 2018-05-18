@@ -22,7 +22,7 @@ export class ShowCommentsComponent {
   public commentsCollection: AngularFirestoreCollection<Comments>;
   comments: Observable<Comments[]>;
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
-    this.commentsCollection = afs.collection<Comments>('comments', comment => comment.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')));
+    this.commentsCollection = afs.collection<Comments>('comments', ref => ref.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')));
     this.comments = this.commentsCollection.valueChanges();
   }
 }
