@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 interface User {
