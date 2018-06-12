@@ -15,6 +15,8 @@ import { PostComponent } from './post/post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddCommentComponent } from './addcomment/addcomment.component';
 import { ShowCommentsComponent } from './showcomments/showcomments.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { ShowCommentsComponent } from './showcomments/showcomments.component';
     CommentsComponent,
     PostComponent,
     AddCommentComponent,
-    ShowCommentsComponent
+    ShowCommentsComponent,
+    UserLoginComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
