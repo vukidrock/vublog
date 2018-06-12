@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
 
+import { Router } from '@angular/router';
+
 import { FormsModule } from '@angular/forms';
 
 //import { AddCommentService } from '../addcomment.service';
@@ -28,7 +30,7 @@ export class AddCommentComponent implements OnInit {
 
   private commentsCollection: AngularFirestoreCollection<AddComment>;
   comment: Observable<AddComment[]>;
-  constructor(private afs:AngularFirestore, private route:ActivatedRoute) {
+  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router) {
     this.commentsCollection = afs.collection<AddComment>('comments');
     this.comment = this.commentsCollection.valueChanges();
   }
@@ -38,6 +40,8 @@ export class AddCommentComponent implements OnInit {
     const comment: AddComment = { commentContent, commentId, commentInPostId };
     this.commentsCollection.add(comment);
     console.log('ok')
+
+    void(0);
   }
 
  ngOnInit() {}
