@@ -1,5 +1,9 @@
 <div *ngFor="let comment of comments | async">
-  <h3>Comment by: {{ comment.commentByUserId }}</h3>
+  <h3>Comment by: {{ comment.commentByUserID }}</h3>
+  <div *ngFor="let user of users | async">
+    <img src={{user.photoURL}} width=50px>
+  </div>
+
   <p>Noi dung: {{ comment.commentContent }}</p>
   <pre>ID cua comment: {{ comment.commentId }} </pre>
   <hr>

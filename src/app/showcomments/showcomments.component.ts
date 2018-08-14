@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
 
+import { combineLatest } from 'rxjs/observable/combineLatest';
+// import { map } from 'rxjs/operators/map';
+import 'rxjs/add/operator/map';
+
+
 export interface Comments {
-  //  commentByUserId: number;
-    commentId: any;
-    commentContent: any;
-    commentInPostId: any;
-    commentTimeStamp: any;
-  }
+  commentByUserID: number;
+  commentId: any;
+  commentContent: any;
+  commentInPostId: any;
+  commentTimeStamp: any;
+}
+export interface Users {
+  displayName: any;
+  photoURL: string;
+}  
 
 @Component({
   selector: 'app-showcomments',
@@ -20,10 +29,16 @@ export interface Comments {
 })
 export class ShowCommentsComponent {
   public commentsCollection: AngularFirestoreCollection<Comments>;
+  public usersCollection: AngularFirestoreCollection<Users>;
   comments: Observable<Comments[]>;
+  users: Observable<Users>;
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
-    this.commentsCollection = afs.collection<Comments>('comments', ref => ref.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')));
+    this.commentsCollection = afs.collection<Comments>('comments', commentref => commentref.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')));
     this.comments = this.commentsCollection.valueChanges();
+
   }
+
 }
+
+
 
