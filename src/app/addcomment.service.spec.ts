@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AddcommentService } from './addcomment.service';
+import { AddCommentService } from './addcomment.service';
 
 describe('AddcommentService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AddcommentService]
+      providers: [AddCommentService]
     });
   });
 
-  it('should be created', inject([AddcommentService], (service: AddcommentService) => {
+  it('should be created', inject([AddCommentService], (service: AddCommentService) => {
     expect(service).toBeTruthy();
   }));
 });

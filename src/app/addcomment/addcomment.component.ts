@@ -9,14 +9,21 @@ import { Router } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 
+import { AuthService } from '../core/auth.service';
+
+
 //import { AddCommentService } from '../addcomment.service';
 
 
 export interface AddComment {
-//  commentByUserId: number;
+  usercommentId: any;
   commentId: any;
   commentContent: any;
   commentInPostId: any;
+}
+
+export interface User {
+  uid?: any;
 }
 
 
@@ -28,22 +35,37 @@ export interface AddComment {
 
 export class AddCommentComponent implements OnInit {
 
+  public usercommentId: any;
+  public userid: any;;
+
   private commentsCollection: AngularFirestoreCollection<AddComment>;
   comment: Observable<AddComment[]>;
-  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router) {
+  user: Observable<User[]>;
+  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router, private auth: AuthService) {
     this.commentsCollection = afs.collection<AddComment>('comments');
     this.comment = this.commentsCollection.valueChanges();
   }
   addNewComment( commentContent: string ) {
     var commentInPostId = this.route.snapshot.paramMap.get('id');
     const commentId = Date.now();
-    const comment: AddComment = { commentContent, commentId, commentInPostId };
+    this.auth.user.subscribe(user => {this.userid = user.uid
+    var usercommentId = this.userid;
+    console.log(usercommentId)
+    const comment: AddComment = { usercommentId, commentContent, commentId, commentInPostId };
     this.commentsCollection.add(comment);
+  });
     console.log('ok')
 
     void(0);
   }
 
- ngOnInit() {}
+  ngOnInit() {
+    this.auth.user.subscribe(user => {
+      this.userid = user.uid;
+      const abc = this.userid
+      console.log(abc);
+    });
 
+
+  }
 }
