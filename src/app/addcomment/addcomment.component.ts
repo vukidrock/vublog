@@ -48,11 +48,15 @@ export class AddCommentComponent implements OnInit {
   addNewComment( commentContent: string ) {
     var commentInPostId = this.route.snapshot.paramMap.get('id');
     const commentId = Date.now();
-    this.auth.user.subscribe(user => {this.userid = user.uid
-    var usercommentId = this.userid;
-    console.log(usercommentId)
-    const comment: AddComment = { usercommentId, commentContent, commentId, commentInPostId };
-    this.commentsCollection.add(comment);
+    this.auth.user.subscribe(user => {
+      if (user) {
+        this.userid = user.uid
+        var usercommentId = this.userid;
+        console.log(usercommentId)
+        const comment: AddComment = { usercommentId, commentContent, commentId, commentInPostId };
+        this.commentsCollection.add(comment);
+      }
+
   });
     console.log('ok')
 
