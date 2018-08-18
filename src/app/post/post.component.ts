@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
 
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 
 // import { AddCommentService } from '../addcomment.service';
 
@@ -38,7 +38,7 @@ export class PostComponent {
   posts: Observable<Post[]>;
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
 
-    this.itemsCollection = afs.collection<Post>('posts/', postID => postID.where('postID', '==', this.route.snapshot.paramMap.get('id')));
+    this.itemsCollection = afs.collection<Post>('posts/', postID => postID.where('postId', '==', this.route.snapshot.paramMap.get('id')));
     this.posts = this.itemsCollection.valueChanges();
   }
 

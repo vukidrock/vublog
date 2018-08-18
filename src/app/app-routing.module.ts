@@ -8,11 +8,13 @@ import { UsersComponent } from './users/users.component';
 import { CommentsComponent } from './comments/comments.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AddPostComponent } from './addpost/addpost.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   { path: 'post/:id', component: PostComponent },
-  { path: 'login', component: UserLoginComponent }
+  { path: 'login', component: UserLoginComponent },
+  { path: 'addpost', component: AddPostComponent }
 ]
 
 @NgModule({

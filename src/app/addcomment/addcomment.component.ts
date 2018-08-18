@@ -36,7 +36,7 @@ export interface User {
 export class AddCommentComponent implements OnInit {
 
   public usercommentId: any;
-  public userid: any;;
+  public userid: any;
 
   private commentsCollection: AngularFirestoreCollection<AddComment>;
   comment: Observable<AddComment[]>;
@@ -50,7 +50,7 @@ export class AddCommentComponent implements OnInit {
     const commentId = Date.now();
     this.auth.user.subscribe(user => {
       if (user) {
-        this.userid = user.uid
+        this.userid = user.uid;
         var usercommentId = this.userid;
         console.log(usercommentId)
         const comment: AddComment = { usercommentId, commentContent, commentId, commentInPostId };

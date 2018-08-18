@@ -5,7 +5,7 @@
 
 
 <div *ngFor="let post of posts | async">
-  <h3><a href="/post/{{post.postID}}">Tieu de: {{ post.postTitle }}</a></h3>
+  <h3><a href="/post/{{post.postId}}">Tieu de: {{ post.postTitle }}</a></h3>
   <h4>Tac gia: {{ post.postAuthor }}</h4>
   <p>Noi dung: {{ post.postContent }}</p>
   <pre>ID cua post: {{ post.postID }} </pre>

@@ -17,6 +17,7 @@ import { AddCommentComponent } from './addcomment/addcomment.component';
 import { ShowCommentsComponent } from './showcomments/showcomments.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AddPostComponent } from './addpost/addpost.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AddCommentComponent,
     ShowCommentsComponent,
     UserLoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
