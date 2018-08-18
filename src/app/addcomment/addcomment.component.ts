@@ -64,12 +64,5 @@ export class AddCommentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.auth.user.subscribe(user => {
-      this.userid = user.uid;
-      const abc = this.userid
-      console.log(abc);
-    });
-
-
   }
 }

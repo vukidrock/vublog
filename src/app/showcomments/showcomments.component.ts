@@ -28,7 +28,7 @@ export interface Comments {
 }
 export interface Users {
   displayName?: any;
-  photoURL: string;
+  photoURL?: any;
   uid?: any;
 }  
 
@@ -40,6 +40,9 @@ export interface Users {
 export class ShowCommentsComponent {
   public commentsCollection: AngularFirestoreCollection<Comments>;
   public usersCollection: AngularFirestoreCollection<Users>;
+  public photoURL: any;
+  public displayName: any;
+
   comments: Observable<Comments[]>;
   users: Observable<Users[]>;
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
@@ -70,6 +73,8 @@ export class ShowCommentsComponent {
     // console.log('user' +  afs.collection('comments').doc('usercommentId').ref.get());
     // this.users = this.usersCollection.valueChanges();
   }
+
+  
 
 }
 

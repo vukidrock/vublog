@@ -25,4 +25,5 @@ export class PostsComponent {
     this.postsCollection = afs.collection<Post>('posts');
     this.posts = this.postsCollection.valueChanges();
   }
+  
 }
