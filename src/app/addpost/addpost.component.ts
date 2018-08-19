@@ -18,7 +18,7 @@ export interface AddPost {
   postAuthorId: any;
   postContent: any;
   // postComment: any;
-  postId: any;
+  // postId: any;
   // postLike: any;
   postTitle: any;
   postTime?: any;
@@ -48,17 +48,21 @@ export class AddPostComponent implements OnInit {
 
   addNewPost (postContent: string, postTitle: string) {
     const postTime = Date.now();
-    const postId = this.afs.createId();
+    // const postId = this.afs.createId();
     this.auth.user.subscribe(user => {
       if (user) {
         this.userid = user.uid;
         var postAuthorId = this.userid;
-        console.log(postAuthorId);
-        const post: AddPost = { postAuthorId, postContent, postTime, postTitle, postId };
-        this.postsCollection.add(post);
+        // console.log(postAuthorId);
+        const post: AddPost = { postAuthorId, postContent, postTime, postTitle };
+        this.postsCollection.add(post)
+        .then(postRef => { postRef.set({postId: postRef.id, postAuthorId, postContent, postTime, postTitle })
+        return this.router.navigate([`/post/${postRef.id}`]);
+      });
       }
     });
-    console.log('post ok')
+
+    // console.log('post ok');
   }
 
   ngOnInit() {
