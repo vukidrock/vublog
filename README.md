@@ -7,13 +7,21 @@
 - [ x ] view post with id
 - [ x ] add comment system
 - [ x ] show comment (app-show-comment)
+- [ x ] login/ logout system
+- [ x ] add post
+- [ x ] kiem tra lai database, dung database id mac dinh hay dung angular tao ra id
+
+
 
 ---
 - [ ] add timestamp to post/ comment
 - [ ] add user system
 - [ ] view user profile (post, postcount, infomation)
-- [ ] login/ logout system
 - [ ] edit post for user
 - [ ] timestamp for post
-- [ ] add post
-- [ ] kiem tra lai database, dung database id mac dinh hay dung angular tao ra id
+
+---
+Credit:
+- Firebase
+- Angular
+- some fuckin' npm
