@@ -15,6 +15,7 @@ import { AuthService } from '../core/auth.service';
 //import { AddCommentService } from '../addcomment.service';
 
 
+
 export interface AddComment {
   usercommentId: any;
   commentId: any;
@@ -33,7 +34,9 @@ export interface User {
   styleUrls: ['./addcomment.component.css']
 })
 
+
 export class AddCommentComponent implements OnInit {
+  
 
   public usercommentId: any;
   public userid: any;
@@ -55,6 +58,7 @@ export class AddCommentComponent implements OnInit {
         console.log(usercommentId)
         const comment: AddComment = { usercommentId, commentContent, commentId, commentInPostId };
         this.commentsCollection.add(comment);
+        return this.router.navigate([`/post/${commentInPostId}`]);
       }
 
   });

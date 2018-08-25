@@ -40,8 +40,8 @@ export interface Users {
 export class ShowCommentsComponent {
   public commentsCollection: AngularFirestoreCollection<Comments>;
   public usersCollection: AngularFirestoreCollection<Users>;
-  public photoURL: any;
-  public displayName: any;
+  public photoURL?: any;
+  public displayName?: any;
 
   comments: Observable<Comments[]>;
   users: Observable<Users[]>;

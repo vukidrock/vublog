@@ -9,15 +9,30 @@
       <!-- User NOT logged in -->
       <ng-template #guest class="box">
         <em>Vui lòng đăng nhập để bình loạn =)) </em>
-        <a routerLink="/login">nhấn vào đây đkm</a>
+        <a routerLink="/login">nhấn vào đây đkm</a> 
+        <em> [!!!] đăng nhập xong phải quay lại trang này</em>
 
       </ng-template>
       
       <!-- User logged in -->
-      <ng-template #authenticated>
+      <!-- <ng-template #authenticated>
         <div *ngIf="auth.user | async as user">
             <h2>Comment</h2>
             <textarea #commentContent></textarea>
             <button (click)="addNewComment(commentContent.value)">Send</button>
         </div>
-      </ng-template>
+      </ng-template> -->
+
+
+      <ng-template #authenticated>
+            <div *ngIf="auth.user | async as user">
+                <form>
+                    <fieldset class="uk-fieldset">
+                    <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" placeholder="Nhập bình luận" #commentContent></textarea>
+                    <button type="button" class="uk-button uk-button-primary" (click)="addNewComment(commentContent.value)">Send</button>
+                    </div>
+                    </fieldset>
+                </form>
+            </div>
+          </ng-template>

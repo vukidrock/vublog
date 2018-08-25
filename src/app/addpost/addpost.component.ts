@@ -7,10 +7,16 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http'; 
+
+
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from '../core/auth.service';
-import { create } from 'domain';
+// import { create } from 'domain';
+
+import { NgxEditorModule } from 'ngx-editor';
+
 
 
 export interface AddPost {
@@ -37,6 +43,7 @@ export class AddPostComponent implements OnInit {
 
   public postAuthorId: any;
   public userid: any;
+  public mdContent: any;
 
   private postsCollection: AngularFirestoreCollection<AddPost>;
   post: Observable<AddPost[]>;
@@ -53,6 +60,7 @@ export class AddPostComponent implements OnInit {
       if (user) {
         this.userid = user.uid;
         var postAuthorId = this.userid;
+        const postContent = this.mdContent;
         // console.log(postAuthorId);
         const post: AddPost = { postAuthorId, postContent, postTime, postTitle };
         this.postsCollection.add(post)

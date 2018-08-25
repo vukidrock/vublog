@@ -1,8 +1,8 @@
-<div class="box" >
+
+<div class="uk-container">
     <div *ngIf="auth.user | async; then authenticated else guest">
             <!-- template will replace this div -->
     </div>
-  </div>
   
   <!-- User NOT logged in -->
   <ng-template #guest class="box">
@@ -14,9 +14,15 @@
   <!-- User logged in -->
   <ng-template #authenticated>
     <div *ngIf="auth.user | async as user">
-        <input type="text" #postTitle>
-        <h2>Comment</h2>
-        <textarea #postContent></textarea>
-        <button (click)="addNewPost(postContent.value, postTitle.value )">Send</button>
+        <div class="uk-margin">
+            <input class="uk-input" type="text" placeholder="Nhập tiêu đề" #postTitle>
+        </div>
+        <md-editor name="Content" [preRender]="preRenderFunc" [(ngModel)]="mdContent" [height]="'200px'" [mode]="editor" [options]="options" required maxlength="500"></md-editor>
+
+        <button (click)="addNewPost(mdContent.value, postTitle.value )">Send</button>
+
+
     </div>
   </ng-template>
+
+</div>

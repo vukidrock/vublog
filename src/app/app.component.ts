@@ -14,12 +14,13 @@ export interface Item { id: string; name: string; }
 export class AppComponent {
   public itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
-  constructor(public afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.valueChanges();
-  }
+  // constructor(public afs: AngularFirestore) {
+  //   this.itemsCollection = afs.collection<Item>('items');
+  //   this.items = this.itemsCollection.valueChanges();
+  // }
 
-  hello() {
-      console.log('hello');
-}
+  // hello() {
+  //   console.log('hello');
+  // }
+
 }

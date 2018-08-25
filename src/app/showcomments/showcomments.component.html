@@ -1,8 +1,32 @@
-<div *ngFor="let comment of comments | async">
+<!-- <div *ngFor="let comment of comments | async">
   <h3>Comment by: {{ comment.displayName }}</h3>
   <img src={{comment.photoURL}} width=50px>
 
   <p>Noi dung: {{ comment.commentContent }}</p>
   <pre>ID cua comment: {{ comment.commentId }} </pre>
   <hr>
+</div> -->
+
+
+
+<div class="container">
+<article class="uk-comment" *ngFor="let comment of comments | async">
+  <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+      <div class="uk-width-auto">
+          <img class="uk-comment-avatar" src="{{ comment.photoURL }}" width="50" height="50" alt="">
+      </div>
+      <div class="uk-width-expand">
+          <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ comment.displayName }}</a></h4>
+          <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+              <li><a href="#">12 days ago</a></li>
+              <!-- <li><a href="#">{{ comment.commentId }}</a></li> -->
+              <li><a href="#">Reply</a></li>
+          </ul>
+      </div>
+  </header>
+  <div class="uk-comment-body">
+      <p>{{ comment.commentContent }}</p>
+  </div>
+  <hr>
+</article>
 </div>

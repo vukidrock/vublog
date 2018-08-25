@@ -8,6 +8,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
@@ -18,6 +20,10 @@ import { ShowCommentsComponent } from './showcomments/showcomments.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddPostComponent } from './addpost/addpost.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { FormsModule } from '@angular/forms';
+import { LMarkdownEditorModule } from "ngx-markdown-editor";
+import { MarkdownModule } from "ngx-markdown";
 
 
 @NgModule({
@@ -31,14 +37,19 @@ import { AddPostComponent } from './addpost/addpost.component';
     ShowCommentsComponent,
     UserLoginComponent,
     UserProfileComponent,
-    AddPostComponent
+    AddPostComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
+    FormsModule,
+    NgxEditorModule,
+    LMarkdownEditorModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

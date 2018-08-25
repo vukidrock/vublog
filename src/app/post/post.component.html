@@ -1,8 +1,19 @@
-<p>
-  post works!
-</p>
+<div class="uk-container">
+  <article class="uk-article" *ngFor="let post of posts | async">
+  <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{ post.postTitle }}</a></h1>
+  <p class="uk-article-meta">Written by <a href="#">{{ post.postAuthor }}</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
+  <!-- <p [innerHTML]= "post.postContent"></p> -->
+  <markdown ngPreserveWhitespaces>{{ post.postContent }}</markdown>
 
-<div *ngFor="let post of posts | async">
+  
+  <hr class="uk-divider-icon">
+  <app-addcomment></app-addcomment>
+  <app-showcomments></app-showcomments>
+  </article>
+</div>
+
+
+<!-- <div *ngFor="let post of posts | async">
   <h3>Tieu de: {{ post.postTitle }}</h3>
   <h4>Tac gia: {{ post.postAuthor }}</h4>
   <p>Noi dung: {{ post.postContent }}</p>
@@ -11,4 +22,4 @@
   <app-addcomment></app-addcomment>
   <hr>
   <app-showcomments></app-showcomments>
-</div>
+</div> -->
