@@ -46,7 +46,7 @@ export class ShowCommentsComponent {
   comments: Observable<Comments[]>;
   users: Observable<Users[]>;
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
-    this.commentsCollection = afs.collection<Comments>('comments', commentref => commentref.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')));
+    this.commentsCollection = afs.collection<Comments>('comments', commentref => commentref.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')).orderBy('commentId','desc'));
     this.comments = this.commentsCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Comments;

@@ -15,6 +15,7 @@ export interface Post {
   postAuthor: string;
   postTitle: string;
   postContent: string;
+  postTime: any;
 }
 
 export interface AddComment {
@@ -36,10 +37,12 @@ export class PostComponent {
 
   public itemsCollection: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
+  public postTime: any;
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
 
     this.itemsCollection = afs.collection<Post>('posts/', postID => postID.where('postId', '==', this.route.snapshot.paramMap.get('id')));
     this.posts = this.itemsCollection.valueChanges();
+    // console.log(this.posts.postTime);
   }
 
 }
