@@ -25,3 +25,5 @@ Credit:
 - Firebase
 - Angular
 - some fuckin' npm
+
+[ngx-markdown-editor](https://github.com/lon-yang/ngx-markdown-editor)
