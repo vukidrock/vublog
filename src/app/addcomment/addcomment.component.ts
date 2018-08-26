@@ -18,7 +18,7 @@ import { AuthService } from '../core/auth.service';
 
 export interface AddComment {
   usercommentId: any;
-  commentId: any;
+  commentTime: any;
   commentContent: any;
   commentInPostId: any;
 }
@@ -50,14 +50,14 @@ export class AddCommentComponent implements OnInit {
   }
   addNewComment( commentContent: string ) {
     var commentInPostId = this.route.snapshot.paramMap.get('id');
-    const commentId = Date.now();
+    const commentTime = Date.now();
     this.auth.user.subscribe(user => {
       if (user) {
         this.userid = user.uid;
         var usercommentId = this.userid;
-        console.log(usercommentId)
-        const comment: AddComment = { usercommentId, commentContent, commentId, commentInPostId };
-        this.commentsCollection.add(comment);
+        const comment: AddComment = { usercommentId, commentContent, commentTime, commentInPostId };
+        this.commentsCollection.add(comment)
+        .then(commentRef => {commentRef.set({ commentId: commentRef.id, commentContent, usercommentId, commentInPostId, commentTime })})
         return this.router.navigate([`/post/${commentInPostId}`]);
       }
 
@@ -65,6 +65,10 @@ export class AddCommentComponent implements OnInit {
     console.log('ok')
 
     void(0);
+  }
+
+  addReplyComment(  ) {
+     
   }
 
   ngOnInit() {
