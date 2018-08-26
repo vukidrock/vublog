@@ -15,6 +15,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/mergeMap';
 
 import { combineLatest } from 'rxjs/observable/combineLatest';
+import { User } from 'firebase';
 
 
 
@@ -30,7 +31,8 @@ export interface Users {
   displayName?: any;
   photoURL?: any;
   uid?: any;
-}  
+}
+
 
 @Component({
   selector: 'app-showcomments',
@@ -40,8 +42,6 @@ export interface Users {
 export class ShowCommentsComponent {
   public commentsCollection: AngularFirestoreCollection<Comments>;
   public usersCollection: AngularFirestoreCollection<Users>;
-  public photoURL?: any;
-  public displayName?: any;
 
   comments: Observable<Comments[]>;
   users: Observable<Users[]>;
@@ -51,6 +51,7 @@ export class ShowCommentsComponent {
       return changes.map(a => {
         const data = a.payload.doc.data() as Comments;
         const usercommentid = data.usercommentId;
+        
         return afs.collection<Users>('users').doc(usercommentid).snapshotChanges().take(1).map(actions => {
           return actions.payload.data();
         }).map(user => {

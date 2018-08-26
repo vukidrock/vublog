@@ -15,12 +15,24 @@
 
 <button (click)="hello()">hello</button> -->
 
-
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="#">Home</a></li>
+            <li><a href="/posts">Posts</a></li>
+            <li><a href="/addpost">Add post</a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <app-user-profile></app-user-profile>
+    </div>
+    
+</nav>
 
 
 
 <span uk-icon="heart"></span>
-<app-user-profile></app-user-profile>
+
 
 <!-- <nav>
   <a href="/posts">Posts</a>
