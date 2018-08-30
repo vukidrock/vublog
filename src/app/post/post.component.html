@@ -1,6 +1,9 @@
+<!-- <a href="post/BaCyH1pvdNsJp6HM6GKy#81FmLGqo1rmJANc0SOGN" target="_self">click</a> -->
+
 <div class="uk-container">
   <article class="uk-article" *ngFor="let post of posts | async">
   <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{ post.postTitle }}</a></h1>
+
   <p class="uk-article-meta">Written by <a href="#">{{ post.postAuthor }}</a> on {{ post.postTime | date:'dd, MMM yyyy, h:mm a' }}. Posted in <a href="#">Blog</a></p>
   <!-- <p [innerHTML]= "post.postContent"></p> -->
   <markdown ngPreserveWhitespaces>{{ post.postContent }}</markdown>

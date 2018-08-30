@@ -27,6 +27,7 @@ export interface Comments {
   commentTimeStamp: any;
   usercommentId?: any;
 }
+
 export interface Users {
   displayName?: any;
   photoURL?: any;
@@ -34,31 +35,61 @@ export interface Users {
 }
 
 
+export interface CommentsReply {
+  commentReplyUserId?: any;
+  commentReplyContent?: any;
+
+}
+
 @Component({
   selector: 'app-showcomments',
   templateUrl: './showcomments.component.html',
   styleUrls: ['./showcomments.component.css']
 })
+
 export class ShowCommentsComponent {
   public commentsCollection: AngularFirestoreCollection<Comments>;
   public usersCollection: AngularFirestoreCollection<Users>;
+  commentreplycontent?: any;
+  commentReplyToCommentId?: any;
+  photoURL: any;
+
 
   comments: Observable<Comments[]>;
   users: Observable<Users[]>;
+  commentsreply: Observable<CommentsReply[]>;
+  
+
   constructor(public afs: AngularFirestore, private route:ActivatedRoute) {
     this.commentsCollection = afs.collection<Comments>('comments', commentref => commentref.where('commentInPostId', '==', this.route.snapshot.paramMap.get('id')).orderBy('commentId','desc'));
     this.comments = this.commentsCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Comments;
         const usercommentid = data.usercommentId;
+        console.log(data.commentId);
+        const commentsreply = this.afs.collection<CommentsReply>('comments').doc(data.commentId).collection('commentReply', commentreplyref => commentreplyref.where('commentReplyToCommentId', '==', data.commentId));
+        this.commentreplycontent = commentsreply.snapshotChanges().map(changes => {
+          return changes.map (b => {
+            const data2 = b.payload.doc.data() as CommentsReply;
+            const usercommentreplyid = data2.commentReplyUserId;
+            return afs.collection<Users>('users').doc(usercommentreplyid).snapshotChanges().take(1).map(actions => {
+              return actions.payload.data();
+            }).map(users => {
+
+              return {photoURL: (users as any).photoURL, displayName: (users as any).displayName, ...data2};
+            });
+          })
+        }).flatMap(commentreplycontent => Observable.combineLatest(commentreplycontent));
+        // console.log(this.commentreplycontent.commentReplyTime);
         
         return afs.collection<Users>('users').doc(usercommentid).snapshotChanges().take(1).map(actions => {
           return actions.payload.data();
         }).map(user => {
-          return {photoURL: user.photoURL, displayName: user.displayName, ...data};
+          return {photoURL: (user as any).photoURL, displayName: (user as any).displayName, ...data};
         });
       })
     }).flatMap(comments => Observable.combineLatest(comments));
+
     // this.usersCollection = this.afs.collection<Users>('users');
     // this.users = this.usersCollection.snapshotChanges().map(
     //   changes => {
@@ -75,7 +106,25 @@ export class ShowCommentsComponent {
     // this.users = this.usersCollection.valueChanges();
   }
 
+  // public show:boolean = false;
+  // public buttonName:any = 'Show';
+
+  // ngOnInit () {  }
+
+
   
+  // toggle() {
+  //   this.show = !this.show;
+
+  //   // CHANGE THE NAME OF THE BUTTON.
+  //   if(this.show)  
+  //     this.buttonName = "Hide";
+  //   else
+  //     this.buttonName = "Show";
+  // }
+
+  public showDiv2: boolean = true;
+  public showreplytextarea: boolean = false;
 
 }
 

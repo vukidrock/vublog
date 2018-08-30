@@ -9,7 +9,7 @@
 
 
 
-<div class="container">
+<!-- <div class="container">
 <article class="uk-comment" *ngFor="let comment of comments | async">
   <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
       <div class="uk-width-auto">
@@ -18,15 +18,72 @@
       <div class="uk-width-expand">
           <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ comment.displayName }}</a></h4>
           <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-              <li><a href="#">{{ comment.commentTime  | date:'dd, MMM yyyy, h:mm a' }}</a></li>
-              <!-- <li><a href="#">{{ comment.commentId }}</a></li> -->
+              <li><a href="post/{{ comment.commentInPostId }}#{{ comment.commentId }}" id="{{ comment.commentId }}">{{ comment.commentTime  | date:'dd, MMM yyyy, h:mm a' }}</a></li>
+              <li><a href="#">{{ comment.commentId }}</a></li>
               <li><a href="#">Reply</a></li>
           </ul>
       </div>
   </header>
   <div class="uk-comment-body">
       <p>{{ comment.commentContent }}</p>
-  </div>
+
+    </div>
+    <div *ngFor="let commentreply of commentreplycontent | async">
+
+        Hello {{ commentreply.commentReplyContent }}
+        <img class="uk-comment-avatar" src="{{ commentreply.photoURL }}" width="50" height="50" alt="">
+      
+    </div>
   <hr>
 </article>
+</div> -->
+
+<div class="uk-container">
+
+    <ul class="uk-comment-list">
+        <li>
+            <article class="uk-comment uk-visible-toggle" *ngFor="let comment of comments | async">
+                <header class="uk-comment-header uk-position-relative">
+                  <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                      <div class="uk-width-auto">
+                          <img class="uk-comment-avatar" src="{{ comment.photoURL }}" width="50" height="50" alt="">
+                      </div>
+                      <div class="uk-width-expand">
+                          <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ comment.displayName }}</a></h4>
+                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">{{ comment.commentTime  | date:'dd, MMM yyyy, h:mm a' }}</a></p>
+                      </div>
+                  </div>
+                  <div class="uk-position-top-right uk-position-small uk-hidden-hover">
+                    <a class="uk-link-muted">Reply</a>
+                  </div>
+                </header>
+                <div class="uk-comment-body">
+                    <p>{{ comment.commentContent }}</p>
+                </div>
+                <hr class="uk-divider-small">
+
+            </article>
+            <ul>
+                <li>
+                    <article class="uk-comment uk-visible-toggle" *ngFor="let commentreply of commentreplycontent | async">
+                        <header class="uk-comment-header uk-position-relative">
+                            <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                <div class="uk-width-auto">
+                                    <img class="uk-comment-avatar" src="{{ commentreply.photoURL }}" width="50" height="50" alt="">
+                                </div>
+                                <div class="uk-width-expand">
+                                    <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Author</a></h4>
+                                    <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12 days ago</a></p>
+                                </div>
+                            </div>
+                            <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted" (click)="toggle()">Reply</a></div>
+                        </header>
+                        <div class="uk-comment-body">
+                            <p>heelllo {{ commentreply.commentReplyContent }}</p>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>

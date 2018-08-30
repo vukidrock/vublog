@@ -24,6 +24,7 @@ import { NgxEditorModule } from 'ngx-editor';
 import { FormsModule } from '@angular/forms';
 import { LMarkdownEditorModule } from "ngx-markdown-editor";
 import { MarkdownModule } from "ngx-markdown";
+import { RelationshipComponent } from './relationship/relationship.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MarkdownModule } from "ngx-markdown";
     UserLoginComponent,
     UserProfileComponent,
     AddPostComponent,
+    RelationshipComponent,
   ],
   imports: [
     BrowserModule,
