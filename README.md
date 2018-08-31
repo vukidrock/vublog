@@ -29,3 +29,29 @@ Credit:
 [ngx-markdown-editor](https://github.com/lon-yang/ngx-markdown-editor)
 [uikit](https://github.com/uikit/uikit)
 []()
+
+---
+
+change tsconfig.json in function folder to
+````
+{
+  "compilerOptions": {
+    "lib": ["es6"],
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "target": "es6",
+    "typeRoots": [
+      "./functions/node_modules/@types"
+      ]
+  },
+  
+  "compileOnSave": true,
+  "include": [
+    "src"
+  ]
+}
+````
+
+use ``` ng build --prod ``` before deploy

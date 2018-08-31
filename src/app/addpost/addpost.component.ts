@@ -48,7 +48,7 @@ export class AddPostComponent implements OnInit {
   private postsCollection: AngularFirestoreCollection<AddPost>;
   post: Observable<AddPost[]>;
   user: Observable<User[]>; 
-  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router, private auth: AuthService) {
+  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router, public auth: AuthService) {
     this.postsCollection = afs.collection<AddPost>('posts');
     this.post = this.postsCollection.valueChanges();
   }

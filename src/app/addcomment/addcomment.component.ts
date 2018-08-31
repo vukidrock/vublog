@@ -44,7 +44,7 @@ export class AddCommentComponent implements OnInit {
   private commentsCollection: AngularFirestoreCollection<AddComment>;
   comment: Observable<AddComment[]>;
   user: Observable<User[]>;
-  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router, private auth: AuthService) {
+  constructor(private afs:AngularFirestore, private route:ActivatedRoute, private router: Router, public auth: AuthService) {
     this.commentsCollection = afs.collection<AddComment>('comments');
     this.comment = this.commentsCollection.valueChanges();
   }

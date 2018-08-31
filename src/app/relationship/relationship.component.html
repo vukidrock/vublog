@@ -1,7 +1,11 @@
 
 <div class="uk-container">
     <ul class="uk-thumbnav">
-        <li *ngFor="let friend of relationship | async"><a href=""><img class="uk-preserve-width uk-border-circle" src="{{ friend.photoURL }}" alt="" width="50"><span>{{ friend.displayName }}</span></a></li>
+        <li *ngFor="let friend of relationship | async">
+            <a href="">
+            <img class="uk-preserve-width uk-border-circle" src="{{ friend.photoURL }}" alt="{{ friend.displayName }}" width="50" >
+            </a>
+        </li>
     </ul>
 <!-- <div class="uk-margin">
     <div *ngFor="let friend of relationship | async">
